@@ -25,9 +25,10 @@ public class ApiOrangeSDK {
         try {
             OrangeMoneyAPI orangeApi = new OrangeMoneyAPI("MO-YAN", "password", "Orange@123")
                     .withTransactionData(TransactionData.from("65426926", "1000", "087163", "12345"))
-                    //.withCustomReference("123456778") // optional
-                    .useProdApi() // for production
-                    .withoutSSLVerification(); // if you have any troubleshoot with ssl verification (not recommended)
+                    //.withCustomReference("123456778") // optionelle
+                    .useProdApi() // en production
+                    //.useDevApi() // en test
+                    .withoutSSLVerification(); // communiquer avec l'api sans la vérification SSL (en cas de problème avec cette dernière)
 
             PaymentSDK paymentSDK = new PaymentSDK(orangeApi);
             TransactionResponse response = paymentSDK.handlePayment();
